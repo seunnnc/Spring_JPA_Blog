@@ -28,11 +28,13 @@ public class DummyControllerTest {
 	@Autowired	//의존성 주입 
 	private UserRepository userRepository;
 	
+	
+	
 	//save함수 : id 전달하지 않으면 insert해주고 id 전달하면 해당 id 대한 데이터 있으면 update 없으면 insert해줌 
 	//email, password
 	@Transactional
 	@PutMapping("/dummy/user/{id}")
-	public User UpdateUser(@PathVariable int id, @RequestBody User requestUser) {	//JSON 데이터 요청 -> MessageConverter의 Jackson 라이브러리가 변환해서 받아줌
+	public User updateUser(@PathVariable int id, @RequestBody User requestUser) {	//JSON 데이터 요청 -> MessageConverter의 Jackson 라이브러리가 변환해서 받아줌
 		System.out.println("id : " + id);
 		System.out.println("password : " + requestUser.getPassword());
 		System.out.println("email : " + requestUser.getEmail());
@@ -45,8 +47,8 @@ public class DummyControllerTest {
 
 		//userRepository.save(user);
 		
-		//더티 체킹 
-		return null;
+		//더티 체킹
+		return user;
 	}
 	
 	@GetMapping("/dummy/users")
