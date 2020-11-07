@@ -3,7 +3,7 @@
 <br />
 <div class="jumbotron text-center" style="margin-bottom: 0">
 	<p>Create by SECHOI</p>
-	<p>🖥 https://github.com/seunnnc</p>
+	<a href="https://github.com/seunnnc"><p>🖥 https://github.com/seunnnc</p></a>
 	<p>📧 wnseunc@gmail.com</p>
 </div>
 </body>
