@@ -23,15 +23,15 @@ let index = {
 		$.ajax({
 			//회원가입 요청
 			type: "POST",
-			url: "/blog/api/user",
+			url: "/api/user",
 			data: JSON.stringify(data),	//http body 요청 
 			contentType: "application/json; charset=utf-8"	//body data 어떤 타입인지 
 			//dataType: "json"	//요청해서 서버에 응답왔을 때 json으로 오면 javascript object로 변경 
 		}).done(function(resp) {
 			//요청 성공 시 실행
 			alert("회원가입을 환영합니다!");
-			console.log(resp);
-			location.href="/blog";
+			//console.log(resp);
+			location.href="/";
 		}).fail(function(error) {
 			//요청 실패 시 실행
 			alert(JSON.stringify(error));
@@ -54,14 +54,14 @@ let index = {
 		$.ajax({
 			//로그인 요청
 			type: "POST",
-			url: "/blog/api/user/login",
+			url: "/api/user/login",
 			data: JSON.stringify(data),	//http body 요청 
 			contentType: "application/json; charset=utf-8"	//body data 어떤 타입인지 
 			//dataType: "json"	//요청해서 서버에 응답왔을 때 json으로 오면 javascript object로 변경 
 		}).done(function(resp) {
 			//요청 성공 시 실행
 			alert("로그인 성공!");
-			location.href="/blog";
+			location.href="/";
 		}).fail(function(error) {
 			//요청 실패 시 실행
 			alert(JSON.stringify(error));
