@@ -6,11 +6,13 @@ import java.util.function.Supplier;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.*;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +30,17 @@ public class DummyControllerTest {
 	@Autowired	//의존성 주입 
 	private UserRepository userRepository;
 	
+	@DeleteMapping("/dummy/user/{id}")
+	public String delete(@PathVariable int id) {
+		
+		try {
+			userRepository.deleteById(id);
+		} catch(EmptyResultDataAccessException e) {
+			return "삭제 실패! 해당 id DB에 없음!";
+		}
+		
+		return "삭제 완료! id : " + id;
+	}
 	
 	
 	//save함수 : id 전달하지 않으면 insert해주고 id 전달하면 해당 id 대한 데이터 있으면 update 없으면 insert해줌 
