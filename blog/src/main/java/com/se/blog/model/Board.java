@@ -39,14 +39,13 @@ public class Board {
 	@Lob	//대용량 데이터 쓸때 사용 
 	private String content;	//섬머노트 라이브러리 <html>태그 섞여서 디자인이 됨. 
 	
-	@ColumnDefault("0")
 	private int count;	//조회수 
 
 	@ManyToOne(fetch = FetchType.EAGER)	//Many = Board, One = User -> 여러 게시물 한 명의 유저가 쓸 수 있음 
 	@JoinColumn(name = "userId")
 	private User user;	//DB는 오브젝트 저장할 수 없으니 자바는 저장 가능, FK
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)	//mappedBy : 연관관걔의 주인이 아니다(FK가 아님) DB에 컬럼 만들지X 
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)	//mappedBy : 연관관의 주인이 아니다(FK가 아님) DB에 컬럼 만들지X 
 	private List<Reply> reply;
 	
 	@CreationTimestamp
