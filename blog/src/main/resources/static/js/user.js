@@ -3,6 +3,9 @@ let index = {
 		$("#btn-save").on("click", ()=>{	//function(){} 을 사용하지 않는 이유: this를 바인딩 하기 위해서!
 			this.save();
 		});
+		$("#btn-update").on("click", ()=>{	//function(){} 을 사용하지 않는 이유: this를 바인딩 하기 위해서!
+			this.update();
+		});
 	},
 	
 	save: function() {
@@ -31,6 +34,28 @@ let index = {
 			location.href="/";
 		}).fail(function(error) {
 			//요청 실패 시 실행
+			alert(JSON.stringify(error));
+		});	
+
+	},
+	
+	update: function() {
+		let data = {
+			id: $("#id").val(),
+			username: $("#username").val(),
+			password: $("#password").val(),
+			email: $("#email").val()
+		};
+		$.ajax({
+			type: "PUT",
+			url: "/user",
+			data: JSON.stringify(data),	
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(resp) {
+			alert("회원정보 수정완료!");
+			location.reload();
+		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});	
 

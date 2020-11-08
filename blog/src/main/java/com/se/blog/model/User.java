@@ -31,7 +31,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	//프로젝트에서 연결된 DB 넘버링 전략 따라감
 	private int id;	//auto_increment
 	
-	@Column(nullable = false, length = 30, unique=true)
+	@Column(nullable = false, length = 100, unique=true)
 	private String username;	//아이디 
 	
 	@Column(nullable = false, length = 100)	//비밀번호 암호화떄문에 100
@@ -43,6 +43,9 @@ public class User {
 	//DB는 RoleType없음 
 	@Enumerated(EnumType.STRING)
 	private RoleType role;	//Enum 쓰는것이 좋음 //ADMIN, USER
+	
+	
+	private String oauth;	//소셜 로그인/일반 로그인 구별해주기 위해 
 	
 	@CreationTimestamp	//시간 자동 입력
 	private Timestamp createDate;
