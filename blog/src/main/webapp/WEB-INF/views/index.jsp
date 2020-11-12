@@ -7,6 +7,7 @@
 		<div class="card m-3">
 			<div class="card-body">
 				<h4 class="card-title">${board.title}</h4>
+				<h6><i>From. ${board.user.username}</i></h6>
 				<a href="/board/${board.id}" class="btn btn-primary">상세보기</a>
 			</div>
 		</div>
