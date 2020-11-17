@@ -32,14 +32,18 @@
 		<div class="card-header">
 			댓글 리스트
 		</div>
-		<ul id="comment--box" class="list-group">
-			<li id="comment--1" class="list-group-item d-flex justify-content-between">
-			댓글댓
+		<ul id="reply--box" class="list-group">
+			<c:forEach var="reply" items="${board.replies}">
+				<li id="rreply--1" class="list-group-item d-flex justify-content-between">
+				<div>${reply.content}</div>
 				<div class="d-flex">
-					<div><i>From. 유저</i>&nbsp;&nbsp;</div>
+					<div><i>From. ${reply.user.username}</i>&nbsp;&nbsp;</div>
 					<button class="badge">삭제</button>
 				</div>
 			</li>
+			</c:forEach>
+		
+			
 		</ul>
 	</div>
 	<br />

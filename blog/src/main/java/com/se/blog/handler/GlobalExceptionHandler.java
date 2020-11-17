@@ -1,4 +1,4 @@
-package com.se.blog.hadler;
+package com.se.blog.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
