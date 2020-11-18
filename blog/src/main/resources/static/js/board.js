@@ -76,10 +76,10 @@ let index = {
 	
 	replySave: function() {
 		let data = {
+			userId: $("#userId").val(),
+			boardId: $("#boardId").val(),
 			content: $("#reply-content").val()
 		};
-		
-		console.log(data);
 		
 		$.ajax({
 			type: "POST",
@@ -89,7 +89,7 @@ let index = {
 			dataType: "json"
 		}).done(function(resp) {
 			alert("댓글등록 완료!");
-			location.href = `board/${data.boardId}`;
+			location.href = `/board/${data.boardId}`;
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
