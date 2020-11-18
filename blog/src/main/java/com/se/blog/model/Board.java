@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,7 +40,7 @@ public class Board {
 	private String title;
 	
 	@Lob	//대용량 데이터 쓸때 사용 
-	private String content;	//섬머노트 라이브러리 <html>태그 섞여서 디자인이 됨. 
+	private String content;	//섬머노트 라이브러리
 	
 	private int count;	//조회수 
 
@@ -49,6 +50,7 @@ public class Board {
 	
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)	//mappedBy : 연관관의 주인이 아니다(FK가 아님) DB에 컬럼 만들지X 
 	@JsonIgnoreProperties({"board"})
+	@OrderBy("id desc")
 	private List<Reply> replies;
 	
 	@CreationTimestamp

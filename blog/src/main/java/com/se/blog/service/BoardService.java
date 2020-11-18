@@ -17,7 +17,6 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 
-	// 회원가입
 	@Transactional
 	public void write(Board board, User user) {	//title, content
 		board.setCount(0);
