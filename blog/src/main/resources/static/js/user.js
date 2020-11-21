@@ -28,10 +28,13 @@ let index = {
 			contentType: "application/json; charset=utf-8"	//body data 어떤 타입인지 
 			//dataType: "json"	//요청해서 서버에 응답왔을 때 json으로 오면 javascript object로 변경 
 		}).done(function(resp) {
-			//요청 성공 시 실행
-			alert("회원가입을 환영합니다!");
-			//console.log(resp);
-			location.href="/";
+			if(resp.status === 500) {
+				alert("회원가입에 실패했습니다.");
+			} else {
+				//요청 성공 시 실행
+				alert("회원가입을 환영합니다!");
+				location.href="/";
+			}
 		}).fail(function(error) {
 			//요청 실패 시 실행
 			alert(JSON.stringify(error));
